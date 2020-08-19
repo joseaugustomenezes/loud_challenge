@@ -50,46 +50,34 @@ export const fetchOpinionsFailure = () => ({
   type: actionTypes.FETCH_OPINIONS_FAILURE,
 });
 
-export const fetchOpinion = ({ opinionId }) => ({
-  type: actionTypes.FETCH_OPINION_REQUEST,
-  opinionId,
-});
-
-export const fetchOpinionSuccess = () => ({
-  type: actionTypes.FETCH_OPINION_SUCCESS,
-});
-
-export const fetchOpinionFailure = () => ({
-  type: actionTypes.FETCH_OPINION_FAILURE,
-});
-
 export const createOpinion = ({ title, content }) => ({
   type: actionTypes.CREATE_OPINION_REQUEST,
   title,
   content,
 });
 
-export const createOpinionSuccess = () => ({
+export const createOpinionSuccess = (opinion) => ({
   type: actionTypes.CREATE_OPINION_SUCCESS,
+  opinion,
 });
 
-export const createOpinionFailure = () => ({
+export const createOpinionFailure = (error) => ({
   type: actionTypes.CREATE_OPINION_FAILURE,
+  error,
 });
 
 export const insertUpvote = (opinionId) => ({
   type: actionTypes.INSERT_UPVOTE_REQUEST,
-  opinionId
-});
-
-export const insertUpvoteSuccess = () => ({
-  type: actionTypes.INSERT_UPVOTE_SUCCESS,
-});
-
-export const insertUpvoteFailure = (error, opinionId) => ({
-  type: actionTypes.INSERT_UPVOTE_FAILURE,
-  error,
   opinionId,
+});
+
+export const insertUpvoteSuccess = (opinionId) => ({
+  type: actionTypes.INSERT_UPVOTE_SUCCESS,
+  opinionId,
+});
+
+export const insertUpvoteFailure = () => ({
+  type: actionTypes.INSERT_UPVOTE_FAILURE,
 });
 
 export const deleteUpvote = (opinionId) => ({
@@ -97,8 +85,9 @@ export const deleteUpvote = (opinionId) => ({
   opinionId,
 });
 
-export const deleteUpvoteSuccess = () => ({
+export const deleteUpvoteSuccess = (opinionId) => ({
   type: actionTypes.DELETE_UPVOTE_SUCCESS,
+  opinionId,
 });
 
 export const deleteUpvoteFailure = (error, opinionId) => ({

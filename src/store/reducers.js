@@ -94,32 +94,29 @@ export default (state = {}, action) => {
         opinions: {
           ...state.opinions,
           error: undefined,
+        }
+      };
+    case actionTypes.INSERT_UPVOTE_SUCCESS:
+      return {
+        ...state,
+        opinions: {
+          ...state.opinions,
+          error: undefined,
           content: {
             ...state.opinions.content,
             [action.opinionId]: {
               ...state.opinions.content[action.opinionId],
-              has_voted: true,
               upvotes_count: state.opinions.content[action.opinionId].upvotes_count + 1,
             }
           }
         }
       };
-    case actionTypes.INSERT_UPVOTE_SUCCESS:
-      return state;
     case actionTypes.INSERT_UPVOTE_FAILURE:
       return {
         ...state,
         opinions: {
           ...state.opinions,
           error: action.error,
-          content: {
-            ...state.opinions.content,
-            [action.opinionId]: {
-              ...state.opinions.content[action.opinionId],
-              has_voted: false,
-              upvotes_count: state.opinions.content[action.opinionId].upvotes_count - 1,
-            }
-          }
         }
       };
     case actionTypes.DELETE_UPVOTE_REQUEST:
@@ -127,33 +124,66 @@ export default (state = {}, action) => {
         ...state,
         opinions: {
           ...state.opinions,
-          error: action.error,
+          error: undefined,
+        }
+      };
+    case actionTypes.DELETE_UPVOTE_SUCCESS:
+      return {
+        ...state,
+        opinions: {
+          ...state.opinions,
+          error: undefined,
           content: {
             ...state.opinions.content,
             [action.opinionId]: {
               ...state.opinions.content[action.opinionId],
-              has_voted: false,
               upvotes_count: state.opinions.content[action.opinionId].upvotes_count - 1,
             }
           }
         }
       };
-    case actionTypes.DELETE_UPVOTE_SUCCESS:
-      return state;
     case actionTypes.DELETE_UPVOTE_FAILURE:
       return {
         ...state,
         opinions: {
           ...state.opinions,
           error: action.error,
+        }
+      };
+    case actionTypes.CREATE_OPINION_REQUEST:
+      return {
+        ...state,
+        opinion: {
+          loading: true,
+          error: undefined,
+        }
+      };
+    case actionTypes.CREATE_OPINION_SUCCESS:
+      return {
+        ...state,
+        opinion: {
+          ...state.opinion,
+          ...action.opinion,
+          loading: false,
+        },
+        opinions: {
+          ...state.opinions,
+          ids: [
+            ...state.opinions.ids,
+            action.opinion.id,
+          ],
           content: {
             ...state.opinions.content,
-            [action.opinionId]: {
-              ...state.opinions.content[action.opinionId],
-              has_voted: true,
-              upvotes_count: state.opinions.content[action.opinionId].upvotes_count + 1,
-            }
-          }
+            [action.opinion.id]: {...action.opinion, upvotes_count: 0},
+          },
+        }
+      };
+    case actionTypes.CREATE_OPINION_FAILURE:
+      return {
+        ...state,
+        opinion: {
+          ...state.opinion,
+          error: action.error,
         }
       };
     default:

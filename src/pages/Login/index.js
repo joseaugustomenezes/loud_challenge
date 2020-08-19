@@ -20,7 +20,7 @@ const Login = () => {
         <h1>Login</h1>
         <hr />
         <Formik
-          initialValues={{ email: "", username: "", password: "" }}
+          initialValues={{ username: "", password: "" }}
           validate={(values) => {
             const errors = {};
             if (!values.username) errors.username = "Campo obrigatório";

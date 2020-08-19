@@ -8,6 +8,7 @@ import Spinner from "react-bootstrap/Spinner";
 import ReactMarkdown from "react-markdown";
 
 import Toast from "../../components/Toast";
+import Modal from "./Modal";
 import "./index.css";
 
 import {
@@ -21,16 +22,22 @@ import {
 const Feed = () => {
   const dispatch = useDispatch();
   const opinions = useSelector((state) => state.opinions);
+  const opinion = useSelector((state) => state.opinion);
   const [opinionsIds, setOpinionsIds] = useState([]);
   const [search, setSearch] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     dispatch(fetchOpinions());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     opinions?.ids && setOpinionsIds(opinions.ids);
   }, [opinions]);
+
+  useEffect(() => {
+    opinion?.id && setModalVisible(false);
+  }, [opinion]);
 
   useEffect(() => {
     if (opinions?.ids?.length) {
@@ -74,6 +81,9 @@ const Feed = () => {
           />
         </Form.Group>
         <hr />
+        <div style={{ textAlign: "center", marginBottom: "15px" }}>
+          <Button onClick={() => setModalVisible(true)}>Nova opinião</Button>
+        </div>
         {opinions?.loading ? (
           <div style={{ textAlign: "center" }}>
             <Spinner
@@ -116,32 +126,21 @@ const Feed = () => {
                     ) : (
                       <Button
                         onClick={() => dispatch(insertUpvote(opinionId))}
-                        variant="success"
                       >
-                        Votar
+                        Add. / Remover Voto
                       </Button>
                     )}
                   </div>
                 </Card.Title>
                 <Card.Text>
-                  <div class="text">
-                    <div class="shadow"></div>
-                    <ReactMarkdown
-                      source={opinions.content[opinionId].content}
-                    />
-                  </div>
-                  <Button
-                    style={{ marginTop: "10px" }}
-                    onClick={() => dispatch(fetchOpinion(opinionId))}
-                  >
-                    Detalhes
-                  </Button>
+                  <ReactMarkdown source={opinions.content[opinionId].content} />
                 </Card.Text>
               </Card.Body>
             </Card>
           ))
         )}
       </Container>
+      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
     </div>
   );
 };

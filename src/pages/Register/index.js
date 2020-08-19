@@ -24,7 +24,11 @@ const Register = () => {
           if (!values.email) errors.email = requiredFieldError;
           else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) errors.email = "Formato de Email inválido"
           if (!values.username) errors.username = requiredFieldError;
+          else if(values.username.length < 3) errors.username = "O nome de usuário deve possuir no mínimo 3 caracteres";
+          else if(values.username.length > 30) errors.username = "O nome de usuário deve possuir no máximo 30 caracteres";
           if (!values.password) errors.password = requiredFieldError;
+          else if(values.password.length < 8) errors.password = "A senha deve possuir no mínimo 8 caracteres";
+          else if(values.password.length > 30) errors.password = "A senha deve possuir no máximo 30 caracteres";
           return errors;
         }}
         onSubmit={(values) => {
