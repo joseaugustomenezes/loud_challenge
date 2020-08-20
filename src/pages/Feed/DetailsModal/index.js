@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "react-bootstrap/Spinner";
-import Button from "react-bootstrap/Button";
 import ReactMarkdown from "react-markdown";
 
 import {
@@ -20,11 +19,11 @@ const DetailsModal = ({ visible, onClose, opinionId }) => {
 
   useEffect(() => {
     opinionId && dispatch(fetchOpinion(opinionId));
-  }, [opinionId]);
+  }, [opinionId, dispatch]);
 
   useEffect(() => {
     opinion?.error && onClose();
-  }, [opinion]);
+  }, [opinion, onClose]);
 
   const Spin = () => (
     <div style={{ textAlign: "center" }}>

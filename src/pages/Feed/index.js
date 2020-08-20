@@ -12,7 +12,7 @@ import CreateModal from "./CreateModal";
 import DetailsModal from "./DetailsModal";
 import "./index.css";
 
-import { fetchOpinions, insertUpvote, logout } from "../../store/actions";
+import { fetchOpinions, logout } from "../../store/actions";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -23,6 +23,9 @@ const Feed = () => {
   const [createModalVisible, setCreateModalVisible] = useState(false);
   const [detailsModalVisible, setDetailsModalVisible] = useState(false);
   const [detailsOpinionId, setDetailsOpinionId] = useState();
+
+  const ids = opinions?.ids;
+  const content = opinions?.content;
 
   useEffect(() => {
     dispatch(fetchOpinions());
@@ -37,18 +40,18 @@ const Feed = () => {
   }, [opinion]);
 
   useEffect(() => {
-    if (opinions?.ids?.length) {
+    if (ids?.length) {
       search.length
         ? setOpinionsIds(
-            opinions.ids.filter((opinionId) =>
-              opinions.content[opinionId].title
+            ids.filter((opinionId) =>
+              content[opinionId].title
                 .toLowerCase()
                 .includes(search.toLowerCase())
             )
           )
-        : setOpinionsIds(opinions.ids);
+        : setOpinionsIds(ids);
     }
-  }, [search]);
+  }, [search, content, ids]);
 
   return (
     <div style={{ position: "relative" }}>

@@ -10,7 +10,7 @@ Para rodar o projeto, tendo nodejs e npm instalado na máquina, basta entrar na 
 ## Bibliotecas utilizadas
 No desenvolvimento do projeto, utilizei bibliotecas bastante famosas e utilizadas em projetos react atualmente.
 
-### `Redux + Redux-Saga`
+### `react-redux + redux-saga`
 Para me auxiliar no gerenciamento de estado da aplicação, utilizei o redux, bliblioteca mais utilizada para esse tipo de problema no React, com o middleware Redux-Saga, para tratar requisições asíncronas com o poder do Redux de forma efetiva e organizada.
 
 ### `axios`
@@ -24,3 +24,6 @@ Mesmo não sendo requisitado que o projeto tivesse uma ui, para que não ficasse
 
 ### `react-router-dom`
 Biblioteca responsável pelo gerenciamento de rotas no projeto
+
+### `react-markdown`
+Biblioteca utilizada na interpretação de textos com markdown
