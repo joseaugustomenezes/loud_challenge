@@ -6,6 +6,18 @@ Para rodar o projeto, tendo nodejs e npm instalado na máquina, basta entrar na 
 ### `npm install`
 ### `npm start`
 
+## Como deployar
+Para fazer um deploy local, é necessário se utilizar dos seguintes comandos na raíz do projeto:
+
+### `serve -s build`
+esse comando gerará uma build otimizada para sua aplicação react;
+
+### `npm install -g serve`
+esse comando instalará globalmente o serve, para que você possa "servir" a build da sua aplicação react
+
+### `serve -s build`
+esse comando iniciará um servidor local da build criada do seu projeto. agora é só acessar o http://localhost:5000 para utilizar sua aplicação
+
 
 ## Bibliotecas utilizadas
 No desenvolvimento do projeto, utilizei bibliotecas bastante famosas e utilizadas em projetos react atualmente.
