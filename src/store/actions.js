@@ -50,6 +50,21 @@ export const fetchOpinionsFailure = () => ({
   type: actionTypes.FETCH_OPINIONS_FAILURE,
 });
 
+export const fetchOpinion = (opinionId) => ({
+  type: actionTypes.FETCH_OPINION_REQUEST,
+  opinionId,
+});
+
+export const fetchOpinionSuccess = (opinion) => ({
+  type: actionTypes.FETCH_OPINION_SUCCESS,
+  opinion,
+});
+
+export const fetchOpinionFailure = (error) => ({
+  type: actionTypes.FETCH_OPINION_FAILURE,
+  error,
+});
+
 export const createOpinion = ({ title, content }) => ({
   type: actionTypes.CREATE_OPINION_REQUEST,
   title,

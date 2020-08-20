@@ -1,5 +1,5 @@
 import React from "react";
-import BootstrapModal from "react-bootstrap/Modal";
+import Modal from "react-bootstrap/Modal";
 import { Formik } from "formik";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingButton from "../../../components/LoadingButton";
 import { createOpinion } from "../../../store/actions";
 
-const Modal = ({ visible, onClose }) => {
+const CreateModal = ({ visible, onClose }) => {
   const dispatch = useDispatch();
-  const opinion = useSelector((state) => state.opinion);
+  const opinion = useSelector((state) => state.createOpinion);
 
   const createOpinionForm = () => {
     return (
@@ -80,13 +80,13 @@ const Modal = ({ visible, onClose }) => {
   };
 
   return (
-    <BootstrapModal show={visible} onHide={() => onClose()}>
-      <BootstrapModal.Header closeButton>
-        <BootstrapModal.Title>Nova opinião</BootstrapModal.Title>
-      </BootstrapModal.Header>
-      <BootstrapModal.Body>{createOpinionForm()}</BootstrapModal.Body>
-    </BootstrapModal>
+    <Modal show={visible} onHide={() => onClose()}>
+      <Modal.Header closeButton>
+        <Modal.Title>Nova opinião</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{createOpinionForm()}</Modal.Body>
+    </Modal>
   );
 };
 
-export default Modal;
+export default CreateModal;

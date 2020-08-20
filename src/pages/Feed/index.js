@@ -8,24 +8,21 @@ import Spinner from "react-bootstrap/Spinner";
 import ReactMarkdown from "react-markdown";
 
 import Toast from "../../components/Toast";
-import Modal from "./Modal";
+import CreateModal from "./CreateModal";
+import DetailsModal from "./DetailsModal";
 import "./index.css";
 
-import {
-  fetchOpinions,
-  insertUpvote,
-  deleteUpvote,
-  fetchOpinion,
-  logout,
-} from "../../store/actions";
+import { fetchOpinions, insertUpvote, logout } from "../../store/actions";
 
 const Feed = () => {
   const dispatch = useDispatch();
   const opinions = useSelector((state) => state.opinions);
-  const opinion = useSelector((state) => state.opinion);
+  const opinion = useSelector((state) => state.createOpinion);
   const [opinionsIds, setOpinionsIds] = useState([]);
   const [search, setSearch] = useState("");
-  const [modalVisible, setModalVisible] = useState(false);
+  const [createModalVisible, setCreateModalVisible] = useState(false);
+  const [detailsModalVisible, setDetailsModalVisible] = useState(false);
+  const [detailsOpinionId, setDetailsOpinionId] = useState();
 
   useEffect(() => {
     dispatch(fetchOpinions());
@@ -36,7 +33,7 @@ const Feed = () => {
   }, [opinions]);
 
   useEffect(() => {
-    opinion?.id && setModalVisible(false);
+    opinion?.id && setCreateModalVisible(false);
   }, [opinion]);
 
   useEffect(() => {
@@ -82,7 +79,9 @@ const Feed = () => {
         </Form.Group>
         <hr />
         <div style={{ textAlign: "center", marginBottom: "15px" }}>
-          <Button onClick={() => setModalVisible(true)}>Nova opinião</Button>
+          <Button onClick={() => setCreateModalVisible(true)}>
+            Nova opinião
+          </Button>
         </div>
         {opinions?.loading ? (
           <div style={{ textAlign: "center" }}>
@@ -106,41 +105,47 @@ const Feed = () => {
                   }}
                 >
                   <div>{opinions.content[opinionId].title}</div>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <div
-                      style={{
-                        marginRight: "15px",
-                        color: "#28a745",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      ({opinions.content[opinionId].upvotes_count}) Votos
-                    </div>
-                    {opinions.content[opinionId].has_voted ? (
-                      <Button
-                        onClick={() => dispatch(deleteUpvote(opinionId))}
-                        variant="danger"
-                      >
-                        Remover
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={() => dispatch(insertUpvote(opinionId))}
-                      >
-                        Add. / Remover Voto
-                      </Button>
-                    )}
+                  <div
+                    style={{
+                      color: "#28a745",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    ({opinions.content[opinionId].upvotes_count}) Votos
                   </div>
                 </Card.Title>
                 <Card.Text>
-                  <ReactMarkdown source={opinions.content[opinionId].content} />
+                  <div className="opinion-description">
+                    <div class="shadow"></div>
+                    <ReactMarkdown
+                      source={opinions.content[opinionId].content}
+                    />
+                  </div>
+                  <Button
+                    style={{ marginTop: "10px" }}
+                    variant="link"
+                    onClick={() => {
+                      setDetailsModalVisible(true);
+                      setDetailsOpinionId(opinionId);
+                    }}
+                  >
+                    Exibir Detalhes
+                  </Button>
                 </Card.Text>
               </Card.Body>
             </Card>
           ))
         )}
       </Container>
-      <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
+      <CreateModal
+        visible={createModalVisible}
+        onClose={() => setCreateModalVisible(false)}
+      />
+      <DetailsModal
+        visible={detailsModalVisible}
+        onClose={() => setDetailsModalVisible(false)}
+        opinionId={detailsOpinionId}
+      />
     </div>
   );
 };

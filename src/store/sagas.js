@@ -9,6 +9,7 @@ import {
   REGISTER_USER_REQUEST,
   LOGIN_REQUEST,
   FETCH_OPINIONS_REQUEST,
+  FETCH_OPINION_REQUEST,
   CREATE_OPINION_REQUEST,
   INSERT_UPVOTE_REQUEST,
   DELETE_UPVOTE_REQUEST,
@@ -36,7 +37,7 @@ export function* registerUser({ email, username, password }) {
 export function* login({ username, password }) {
   try {
     const res = yield call(api.post, "/login", { username, password });
-    authLogin(res.data.token);
+    authLogin(res.data.token, res.data.user.id);
     yield put(actions.loginSuccess(username));
     history.push("/");
   } catch (error) {
@@ -63,12 +64,26 @@ export function* fetchOpinions() {
   }
 }
 
+export function* fetchOpinion({ opinionId }) {
+  try {
+    const { data } = yield call(api.get, `/opinions/${opinionId}`);
+    yield put(actions.fetchOpinionSuccess(data));
+  } catch (error) {
+    yield put(
+      actions.fetchOpinionFailure({
+        message: error.response.data.error,
+        status: error.response.status,
+      })
+    );
+  }
+}
+
 export function* createOpinion({ title, content }) {
   try {
-    const { data } = yield call(api.post, '/opinions', { title, content });
+    const { data } = yield call(api.post, "/opinions", { title, content });
     console.log(data);
     yield put(actions.createOpinionSuccess(data));
-  } catch(error) {
+  } catch (error) {
     yield put(
       actions.createOpinionFailure({
         message: error.response.data.error,
@@ -83,7 +98,12 @@ export function* insertUpvote({ opinionId }) {
     yield call(api.post, `/opinions/${opinionId}/vote`);
     yield put(actions.insertUpvoteSuccess(opinionId));
   } catch (error) {
-    yield put(actions.deleteUpvote(opinionId, true));
+    yield put(
+      actions.insertUpvoteFailure({
+        message: error.response.data.error,
+        status: error.response.status,
+      })
+    );
   }
 }
 
@@ -95,7 +115,6 @@ export function* deleteUpvote({ opinionId }) {
     yield put(
       actions.deleteUpvoteFailure(
         { message: error.response.data.error, status: error.response.status },
-        opinionId
       )
     );
   }
@@ -106,6 +125,7 @@ export default function* rootSaga() {
     takeLatest(REGISTER_USER_REQUEST, registerUser),
     takeLatest(LOGIN_REQUEST, login),
     takeLatest(FETCH_OPINIONS_REQUEST, fetchOpinions),
+    takeLatest(FETCH_OPINION_REQUEST, fetchOpinion),
     takeLatest(CREATE_OPINION_REQUEST, createOpinion),
     takeLatest(INSERT_UPVOTE_REQUEST, insertUpvote),
     takeLatest(DELETE_UPVOTE_REQUEST, deleteUpvote),
