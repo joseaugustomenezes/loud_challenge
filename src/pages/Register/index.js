@@ -14,6 +14,71 @@ const Register = () => {
   const loading = useSelector((state) => state.register?.loading);
   const error = useSelector((state) => state.register?.error);
 
+  const MyInnerForm = ({
+    values,
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    touched,
+    errors,
+  }) => (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Insira o email"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.email}
+          isInvalid={touched.email && errors.email}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.email}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Usuário</Form.Label>
+        <Form.Control
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Insira o usuário"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.username}
+          isInvalid={touched.username && errors.username}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.username}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Senha</Form.Label>
+        <Form.Control
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Insira a senha"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.password}
+          isInvalid={touched.password && errors.password}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.password}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <LoadingButton loading={loading} type="submit">
+        Cadastrar
+      </LoadingButton>
+      <span> ou </span>
+      <Link to="/login">Entrar</Link>
+    </Form>
+  );
+
   return (
     <>
       <Toast message={error?.message} status={error?.status} />
@@ -48,70 +113,7 @@ const Register = () => {
             dispatch(registerUser(values));
           }}
         >
-          {({
-            values,
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            touched,
-            errors,
-          }) => (
-            <Form onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Insira o email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  isInvalid={touched.email && errors.email}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.email}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Usuário</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="Insira o usuário"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.username}
-                  isInvalid={touched.username && errors.username}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.username}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Senha</Form.Label>
-                <Form.Control
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Insira a senha"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  isInvalid={touched.password && errors.password}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.password}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <LoadingButton loading={loading} type="submit">
-                Cadastrar
-              </LoadingButton>
-              <span> ou </span>
-              <Link to="/login">Entrar</Link>
-            </Form>
-          )}
+          {(props) => <MyInnerForm {...props} />}
         </Formik>
       </Container>
     </>

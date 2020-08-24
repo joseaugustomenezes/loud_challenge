@@ -119,7 +119,7 @@ const Feed = () => {
                 </Card.Title>
                 <Card.Text>
                   <div className="opinion-description">
-                    <div class="shadow"></div>
+                    <div className="shadow"></div>
                     <ReactMarkdown
                       source={opinions.content[opinionId].content}
                     />

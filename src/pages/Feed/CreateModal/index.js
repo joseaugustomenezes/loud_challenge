@@ -11,6 +11,57 @@ const CreateModal = ({ visible, onClose }) => {
   const dispatch = useDispatch();
   const opinion = useSelector((state) => state.createOpinion);
 
+  const MyInnerForm = ({
+    values,
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    touched,
+    errors,
+  }) => (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Título</Form.Label>
+        <Form.Control
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Título"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.username}
+          isInvalid={touched.title && errors.title}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.title}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Descrição</Form.Label>
+        <Form.Control
+          as="textarea"
+          type="text"
+          name="content"
+          ogin
+          id="content"
+          placeholder="Descrição"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.content}
+          isInvalid={touched.content && errors.content}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.content}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <div style={{ textAlign: "end" }}>
+        <LoadingButton loading={opinion?.loading} type="submit">
+          Criar
+        </LoadingButton>
+      </div>
+    </Form>
+  );
+
   const createOpinionForm = () => {
     return (
       <Formik
@@ -25,56 +76,7 @@ const CreateModal = ({ visible, onClose }) => {
           dispatch(createOpinion(values));
         }}
       >
-        {({
-          values,
-          handleSubmit,
-          handleChange,
-          handleBlur,
-          touched,
-          errors,
-        }) => (
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label>Título</Form.Label>
-              <Form.Control
-                type="text"
-                name="title"
-                id="title"
-                placeholder="Título"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.username}
-                isInvalid={touched.title && errors.title}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.title}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Descrição</Form.Label>
-              <Form.Control
-                as="textarea"
-                type="text"
-                name="content"
-                ogin
-                id="content"
-                placeholder="Descrição"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.content}
-                isInvalid={touched.content && errors.content}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.content}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <div style={{ textAlign: "end" }}>
-              <LoadingButton loading={opinion?.loading} type="submit">
-                Criar
-              </LoadingButton>
-            </div>
-          </Form>
-        )}
+        {(props) => <MyInnerForm {...props} />}
       </Formik>
     );
   };

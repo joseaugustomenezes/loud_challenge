@@ -1,0 +1,396 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Feed /> should render a card 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Feed>
+    <div
+      style={
+        Object {
+          "position": "relative",
+        }
+      }
+    >
+      <Toast>
+        <div
+          style={
+            Object {
+              "position": "absolute",
+              "right": 20,
+              "top": 10,
+            }
+          }
+        >
+          <Toast
+            autohide={true}
+            delay={3000}
+            onClose={[Function]}
+            show={false}
+          >
+            <Fade
+              appear={false}
+              in={false}
+              mountOnEnter={false}
+              timeout={300}
+              unmountOnExit={true}
+            >
+              <Transition
+                addEndListener={[Function]}
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={false}
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                timeout={300}
+                unmountOnExit={true}
+              />
+            </Fade>
+          </Toast>
+        </div>
+      </Toast>
+      <Container
+        fluid={false}
+      >
+        <div
+          className="container"
+        >
+          <div
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "justifyContent": "space-between",
+              }
+            }
+          >
+            <h1>
+              Feed de Opiniões
+            </h1>
+            <Button
+              active={false}
+              disabled={false}
+              onClick={[Function]}
+              variant="primary"
+            >
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Log Out
+              </button>
+            </Button>
+          </div>
+          <hr />
+          <FormGroup>
+            <div
+              className="form-group"
+            >
+              <FormControl
+                id="email"
+                name="email"
+                onChange={[Function]}
+                placeholder="Buscar pelo título"
+                type="email"
+              >
+                <input
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  onChange={[Function]}
+                  placeholder="Buscar pelo título"
+                  type="email"
+                />
+              </FormControl>
+            </div>
+          </FormGroup>
+          <hr />
+          <div
+            style={
+              Object {
+                "marginBottom": "15px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <Button
+              active={false}
+              disabled={false}
+              onClick={[Function]}
+              variant="primary"
+            >
+              <button
+                className="btn btn-primary"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Nova opinião
+              </button>
+            </Button>
+          </div>
+          <Card
+            body={false}
+            key="0"
+            style={
+              Object {
+                "marginBottom": "15px",
+              }
+            }
+          >
+            <div
+              className="card"
+              style={
+                Object {
+                  "marginBottom": "15px",
+                }
+              }
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <CardTitle
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "justifyContent": "space-between",
+                      }
+                    }
+                  >
+                    <ForwardRef
+                      className="card-title"
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "justifyContent": "space-between",
+                        }
+                      }
+                    >
+                      <div
+                        className="card-title h5"
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "display": "flex",
+                            "justifyContent": "space-between",
+                          }
+                        }
+                      >
+                        <div>
+                          test_title
+                        </div>
+                        <div
+                          style={
+                            Object {
+                              "color": "#28a745",
+                              "fontWeight": "bold",
+                            }
+                          }
+                        >
+                          (
+                          3
+                          ) Votos
+                        </div>
+                      </div>
+                    </ForwardRef>
+                  </CardTitle>
+                  <CardText>
+                    <p
+                      className="card-text"
+                    >
+                      <div
+                        className="opinion-description"
+                      >
+                        <div
+                          className="shadow"
+                        />
+                        <ReactMarkdown
+                          astPlugins={Array []}
+                          escapeHtml={true}
+                          parserOptions={Object {}}
+                          plugins={Array []}
+                          rawSourcePos={false}
+                          renderers={Object {}}
+                          skipHtml={false}
+                          source="test_content"
+                          sourcePos={false}
+                          transformLinkUri={[Function]}
+                        >
+                          <Root
+                            key="root-1-1-0"
+                          >
+                            <p
+                              key="paragraph-1-1-0"
+                            >
+                              <TextRenderer
+                                key="text-1-1-0"
+                                nodeKey="text-1-1-0"
+                                value="test_content"
+                              >
+                                test_content
+                              </TextRenderer>
+                            </p>
+                          </Root>
+                        </ReactMarkdown>
+                      </div>
+                      <Button
+                        active={false}
+                        disabled={false}
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "marginTop": "10px",
+                          }
+                        }
+                        variant="link"
+                      >
+                        <button
+                          className="btn btn-link"
+                          disabled={false}
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "marginTop": "10px",
+                            }
+                          }
+                          type="button"
+                        >
+                          Exibir Detalhes
+                        </button>
+                      </Button>
+                    </p>
+                  </CardText>
+                </div>
+              </CardBody>
+            </div>
+          </Card>
+        </div>
+      </Container>
+      <CreateModal
+        onClose={[Function]}
+        visible={false}
+      >
+        <Modal
+          animation={true}
+          autoFocus={true}
+          backdrop={true}
+          dialogAs={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "ModalDialog",
+              "render": [Function],
+            }
+          }
+          enforceFocus={true}
+          keyboard={true}
+          onHide={[Function]}
+          restoreFocus={true}
+          show={false}
+        >
+          <Modal
+            autoFocus={true}
+            backdrop={true}
+            backdropTransition={[Function]}
+            containerClassName="modal-open"
+            enforceFocus={true}
+            keyboard={true}
+            manager={
+              BootstrapModalManager {
+                "containers": Array [],
+                "data": Array [],
+                "handleContainerOverflow": true,
+                "hideSiblingNodes": true,
+                "modals": Array [],
+                "scrollbarSize": 0,
+              }
+            }
+            onEnter={[Function]}
+            onEntering={[Function]}
+            onEscapeKeyDown={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onHide={[Function]}
+            renderBackdrop={[Function]}
+            renderDialog={[Function]}
+            restoreFocus={true}
+            show={false}
+            transition={[Function]}
+          />
+        </Modal>
+      </CreateModal>
+      <DetailsModal
+        onClose={[Function]}
+        visible={false}
+      >
+        <Modal
+          animation={true}
+          autoFocus={true}
+          backdrop={true}
+          dialogAs={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "ModalDialog",
+              "render": [Function],
+            }
+          }
+          enforceFocus={true}
+          keyboard={true}
+          onHide={[Function]}
+          restoreFocus={true}
+          show={false}
+        >
+          <Modal
+            autoFocus={true}
+            backdrop={true}
+            backdropTransition={[Function]}
+            containerClassName="modal-open"
+            enforceFocus={true}
+            keyboard={true}
+            manager={
+              BootstrapModalManager {
+                "containers": Array [],
+                "data": Array [],
+                "handleContainerOverflow": true,
+                "hideSiblingNodes": true,
+                "modals": Array [],
+                "scrollbarSize": 0,
+              }
+            }
+            onEnter={[Function]}
+            onEntering={[Function]}
+            onEscapeKeyDown={[Function]}
+            onExit={[Function]}
+            onExited={[Function]}
+            onHide={[Function]}
+            renderBackdrop={[Function]}
+            renderDialog={[Function]}
+            restoreFocus={true}
+            show={false}
+            transition={[Function]}
+          />
+        </Modal>
+      </DetailsModal>
+    </div>
+  </Feed>
+</Provider>
+`;

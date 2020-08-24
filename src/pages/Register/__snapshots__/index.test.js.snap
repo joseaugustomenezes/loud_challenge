@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Register /> should render without any errors 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <Register>
+        <Toast>
+          <div
+            style={
+              Object {
+                "position": "absolute",
+                "right": 20,
+                "top": 10,
+              }
+            }
+          >
+            <Toast
+              autohide={true}
+              delay={3000}
+              onClose={[Function]}
+              show={false}
+            >
+              <Fade
+                appear={false}
+                in={false}
+                mountOnEnter={false}
+                timeout={300}
+                unmountOnExit={true}
+              >
+                <Transition
+                  addEndListener={[Function]}
+                  appear={false}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={false}
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={300}
+                  unmountOnExit={true}
+                />
+              </Fade>
+            </Toast>
+          </div>
+        </Toast>
+        <Container
+          fluid={false}
+        >
+          <div
+            className="container"
+          >
+            <h1>
+              Cadastro de Usuários
+            </h1>
+            <hr />
+            <Formik
+              initialValues={
+                Object {
+                  "email": "",
+                  "password": "",
+                  "username": "",
+                }
+              }
+              onSubmit={[Function]}
+              validate={[Function]}
+            >
+              <MyInnerForm
+                dirty={false}
+                errors={Object {}}
+                getFieldHelpers={[Function]}
+                getFieldMeta={[Function]}
+                getFieldProps={[Function]}
+                handleBlur={[Function]}
+                handleChange={[Function]}
+                handleReset={[Function]}
+                handleSubmit={[Function]}
+                initialErrors={Object {}}
+                initialTouched={Object {}}
+                initialValues={
+                  Object {
+                    "email": "",
+                    "password": "",
+                    "username": "",
+                  }
+                }
+                isSubmitting={false}
+                isValid={true}
+                isValidating={false}
+                registerField={[Function]}
+                resetForm={[Function]}
+                setErrors={[Function]}
+                setFieldError={[Function]}
+                setFieldTouched={[Function]}
+                setFieldValue={[Function]}
+                setFormikState={[Function]}
+                setStatus={[Function]}
+                setSubmitting={[Function]}
+                setTouched={[Function]}
+                setValues={[Function]}
+                submitCount={0}
+                submitForm={[Function]}
+                touched={Object {}}
+                unregisterField={[Function]}
+                validateField={[Function]}
+                validateForm={[Function]}
+                validateOnBlur={true}
+                validateOnChange={true}
+                validateOnMount={false}
+                values={
+                  Object {
+                    "email": "",
+                    "password": "",
+                    "username": "",
+                  }
+                }
+              >
+                <Form
+                  inline={false}
+                  onSubmit={[Function]}
+                >
+                  <form
+                    className=""
+                    onSubmit={[Function]}
+                  >
+                    <FormGroup>
+                      <div
+                        className="form-group"
+                      >
+                        <FormLabel
+                          column={false}
+                          srOnly={false}
+                        >
+                          <label
+                            className="form-label"
+                          >
+                            Email
+                          </label>
+                        </FormLabel>
+                        <FormControl
+                          id="email"
+                          name="email"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          placeholder="Insira o email"
+                          type="email"
+                          value=""
+                        >
+                          <input
+                            className="form-control"
+                            id="email"
+                            name="email"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            placeholder="Insira o email"
+                            type="email"
+                            value=""
+                          />
+                        </FormControl>
+                        <Feedback
+                          type="invalid"
+                        >
+                          <div
+                            className="invalid-feedback"
+                          />
+                        </Feedback>
+                      </div>
+                    </FormGroup>
+                    <FormGroup>
+                      <div
+                        className="form-group"
+                      >
+                        <FormLabel
+                          column={false}
+                          srOnly={false}
+                        >
+                          <label
+                            className="form-label"
+                          >
+                            Usuário
+                          </label>
+                        </FormLabel>
+                        <FormControl
+                          id="username"
+                          name="username"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          placeholder="Insira o usuário"
+                          type="text"
+                          value=""
+                        >
+                          <input
+                            className="form-control"
+                            id="username"
+                            name="username"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            placeholder="Insira o usuário"
+                            type="text"
+                            value=""
+                          />
+                        </FormControl>
+                        <Feedback
+                          type="invalid"
+                        >
+                          <div
+                            className="invalid-feedback"
+                          />
+                        </Feedback>
+                      </div>
+                    </FormGroup>
+                    <FormGroup>
+                      <div
+                        className="form-group"
+                      >
+                        <FormLabel
+                          column={false}
+                          srOnly={false}
+                        >
+                          <label
+                            className="form-label"
+                          >
+                            Senha
+                          </label>
+                        </FormLabel>
+                        <FormControl
+                          id="password"
+                          name="password"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          placeholder="Insira a senha"
+                          type="password"
+                          value=""
+                        >
+                          <input
+                            className="form-control"
+                            id="password"
+                            name="password"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            placeholder="Insira a senha"
+                            type="password"
+                            value=""
+                          />
+                        </FormControl>
+                        <Feedback
+                          type="invalid"
+                        >
+                          <div
+                            className="invalid-feedback"
+                          />
+                        </Feedback>
+                      </div>
+                    </FormGroup>
+                    <LoadingButton
+                      type="submit"
+                    >
+                      <Button
+                        active={false}
+                        disabled={false}
+                        type="submit"
+                        variant="primary"
+                      >
+                        <button
+                          className="btn btn-primary"
+                          disabled={false}
+                          type="submit"
+                        >
+                          Cadastrar
+                        </button>
+                      </Button>
+                    </LoadingButton>
+                    <span>
+                       ou 
+                    </span>
+                    <Link
+                      to="/login"
+                    >
+                      <LinkAnchor
+                        href="/login"
+                        navigate={[Function]}
+                      >
+                        <a
+                          href="/login"
+                          onClick={[Function]}
+                        >
+                          Entrar
+                        </a>
+                      </LinkAnchor>
+                    </Link>
+                  </form>
+                </Form>
+              </MyInnerForm>
+            </Formik>
+          </div>
+        </Container>
+      </Register>
+    </Provider>
+  </Router>
+</BrowserRouter>
+`;

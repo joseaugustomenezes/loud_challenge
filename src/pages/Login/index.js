@@ -13,6 +13,54 @@ const Login = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
+  const MyInnerForm = ({
+    values,
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    touched,
+    errors,
+  }) => (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Usuário</Form.Label>
+        <Form.Control
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Insira o usuário"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.username}
+          isInvalid={touched.username && errors.username}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.username}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Senha</Form.Label>
+        <Form.Control
+          type="password"
+          name="password"
+          ogin
+          id="password"
+          placeholder="Insira a senha"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.password}
+          isInvalid={touched.password && errors.password}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.password}
+        </Form.Control.Feedback>
+      </Form.Group>
+      <LoadingButton loading={user?.loading} type="submit">Entrar</LoadingButton>
+      <span> ou </span>
+      <Link to="/signup">Cadastar</Link>
+    </Form>
+  );
+
   return (
     <div style={{ possition: "relative" }}>
       <Toast message={user?.error?.message} status={user?.error?.status} />
@@ -31,53 +79,7 @@ const Login = () => {
             dispatch(login(values));
           }}
         >
-          {({
-            values,
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            touched,
-            errors,
-          }) => (
-            <Form onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Label>Usuário</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="Insira o usuário"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.username}
-                  isInvalid={touched.username && errors.username}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.username}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Senha</Form.Label>
-                <Form.Control
-                  type="password"
-                  name="password"
-                  ogin
-                  id="password"
-                  placeholder="Insira a senha"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  isInvalid={touched.password && errors.password}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {errors.password}
-                </Form.Control.Feedback>
-              </Form.Group>
-              <LoadingButton loading={user?.loading} type="submit">Entrar</LoadingButton>
-              <span> ou </span>
-              <Link to="/signup">Cadastar</Link>
-            </Form>
-          )}
+          {(props) => <MyInnerForm {...props} />}
         </Formik>
       </Container>
     </div>

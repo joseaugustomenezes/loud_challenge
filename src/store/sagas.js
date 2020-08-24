@@ -81,7 +81,6 @@ export function* fetchOpinion({ opinionId }) {
 export function* createOpinion({ title, content }) {
   try {
     const { data } = yield call(api.post, "/opinions", { title, content });
-    console.log(data);
     yield put(actions.createOpinionSuccess(data));
   } catch (error) {
     yield put(
